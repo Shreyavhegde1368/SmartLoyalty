@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Share feedback{% endblock %}
+{% block content %}<section class="form-card"><div class="eyebrow">{{ purchase.business_name }}</div><h1>How was your experience?</h1><p class="muted">Your feedback helps this business improve. Submit once for this purchase.</p>
+<div class="purchase-pill">Purchase #{{ purchase.purchase_id }} · ₹{{ "%.2f"|format(purchase.amount) }}</div>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<label>Rating</label><div class="rating-input"><label><input type="radio" name="rating" value="1" required> 1</label><label><input type="radio" name="rating" value="2"> 2</label><label><input type="radio" name="rating" value="3"> 3</label><label><input type="radio" name="rating" value="4"> 4</label><label><input type="radio" name="rating" value="5"> 5</label></div>
+<label>Comments (optional)<textarea name="comments" rows="4" maxlength="1500" placeholder="Tell us what went well or what could be better..."></textarea></label>
+<button class="button full">Submit feedback</button></form></section>{% endblock %}

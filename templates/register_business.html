@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Register business{% endblock %}
+{% block content %}<section class="form-card"><h1>Set up your business</h1><p class="muted">Create a business workspace and owner account.</p>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<label>Business name<input name="business_name" required maxlength="120"></label>
+<label>Business type<input name="business_type" placeholder="Cafe, bakery, salon..." required></label>
+<label>Your name<input name="name" required></label>
+<label>Business/login email<input type="email" name="email" required></label>
+<label>Password<input type="password" name="password" minlength="8" required></label>
+<button class="button full">Create business account</button></form>
+<p class="muted small">Already registered? <a href="{{ url_for('login') }}">Sign in</a></p></section>{% endblock %}

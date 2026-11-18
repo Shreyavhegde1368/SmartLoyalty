@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}My loyalty{% endblock %}
+{% block content %}<div class="eyebrow">YOUR LOYALTY SPACE</div><h1>Hello, {{ current_user }}!</h1><p class="muted">Your memberships and recent activity.</p>
+<h2>Your membership cards</h2><div class="membership-grid">
+{% for a in accounts %}<article class="membership"><div class="eyebrow">SMARTLOYALTY MEMBER</div><h2>{{ a.business_name }}</h2><div class="points">{{ a.points_balance }} <span>points</span></div><p>{{ a.business_type }}</p><a class="button light" href="{{ url_for('rewards_page', account_id=a.account_id) }}">View rewards</a></article>{% else %}<div class="card"><p class="muted">You don't have any loyalty memberships yet. Make a purchase at a participating business to get started.</p></div>{% endfor %}
+</div>
+<section class="card"><h2>Recent purchases</h2>{% if purchases %}<div class="table-wrap"><table><tr><th>Business</th><th>Amount</th><th>Date</th><th>Feedback</th></tr>{% for p in purchases %}<tr><td>{{ p.business_name }}</td><td>₹{{ "%.2f"|format(p.amount) }}</td><td>{{ p.purchase_date.strftime("%d %b %Y") }}</td><td>{{ "Complete" if p.feedback_submitted else "Awaiting feedback" }}</td></tr>{% endfor %}</table></div>{% else %}<p class="muted">Your purchase history will appear here.</p>{% endif %}</section>{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Purchase saved{% endblock %}
+{% block content %}<section class="form-card"><div class="success-mark">✓</div><h1>Purchase saved!</h1><p class="muted">Share this unique feedback link with the customer. They can open it on their phone.</p>
+<label>Feedback link<input id="feedbackLink" value="{{ feedback_url }}" readonly></label>
+<button class="button full" onclick="navigator.clipboard.writeText(document.getElementById('feedbackLink').value).then(()=>this.textContent='Copied!')">Copy feedback link</button>
+<p class="small muted">Scan this purchase-specific QR code to open the feedback form.</p>
+<img class="qr-image" src="data:image/png;base64,{{ qr_image }}" alt="QR code for this purchase's feedback form" width="220" height="220">
+<a href="{{ url_for('business_dashboard') }}">Return to dashboard →</a></section>{% endblock %}

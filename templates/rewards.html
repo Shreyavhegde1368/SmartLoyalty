@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Rewards{% endblock %}
+{% block content %}<div class="eyebrow">{{ account.business_name }}</div><h1>Rewards catalogue</h1><p class="muted">Available balance: <strong>{{ account.points_balance }} points</strong></p>
+<div class="reward-grid">{% for r in rewards %}<article class="card"><div class="icon">✧</div><h3>{{ r.reward_name }}</h3><p class="muted">{{ r.description }}</p><strong>{{ r.points_required }} points</strong>
+<form method="post" action="{{ url_for('redeem_reward', account_id=account.account_id, reward_id=r.reward_id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button full" {% if account.points_balance < r.points_required %}disabled{% endif %}>Redeem reward</button></form></article>{% else %}<p class="muted">No active rewards yet.</p>{% endfor %}</div>
+<a href="{{ url_for('customer_dashboard') }}">← Back to my account</a>{% endblock %}

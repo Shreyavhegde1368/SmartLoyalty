@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}SmartLoyalty | Make every visit count{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">LOYALTY, MADE MEANINGFUL</div>
+  <h1>Make every visit<br><span>count.</span></h1>
+  <p class="lead">A simple way for local businesses to understand customers, collect feedback and reward loyalty.</p>
+  <div class="actions">
+    <a class="button" href="{{ url_for('register_business') }}">Register your business</a>
+    <a class="button secondary" href="{{ url_for('register_customer') }}">Join as a customer</a>
+  </div>
+  <div class="hero-note">Feedback · Points · Rewards · Customer insights</div>
+</section>
+<section class="feature-grid">
+  <article class="card"><div class="icon">▦</div><h3>Quick feedback</h3><p>Customers use a purchase-specific link or QR code to share their experience.</p></article>
+  <article class="card"><div class="icon">✧</div><h3>Loyalty points</h3><p>Reward purchases and feedback with a transparent points history.</p></article>
+  <article class="card"><div class="icon">↗</div><h3>Business insights</h3><p>See purchases, customer activity and feedback ratings in one place.</p></article>
+</section>
+{% endblock %}
